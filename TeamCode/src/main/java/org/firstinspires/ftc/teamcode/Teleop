@@ -24,7 +24,7 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear Opmode")
+@TeleOp(name="Teleop", group="Linear Opmode")
 //@Disabled
 public class TeleopDraft extends LinearOpMode {
 
@@ -86,14 +86,14 @@ public class TeleopDraft extends LinearOpMode {
             leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
             rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
 
-           boolean carousel = gamepad2.a;
+            boolean carousel = gamepad2.a;
 
-           double armMotorPower = gamepad2.left_stick_y;
-           double gripperPosition = gamepad2.right_stick_x;
-           boolean slowSpeed = gamepad1.left_bumper;
-           
-           armMotor.setPower(armMotorPower/1.5);
-           gripper.setPosition(gripperPosition);
+            double armMotorPower = gamepad2.left_stick_y;
+            double gripperPosition = gamepad2.right_stick_x;
+            boolean slowSpeed = gamepad1.left_bumper;
+
+            armMotor.setPower(armMotorPower/1.5);
+            gripper.setPosition(gripperPosition);
 
             // Send calculated power to wheels
             leftFront.setPower(leftPower);
@@ -101,20 +101,22 @@ public class TeleopDraft extends LinearOpMode {
             leftRear.setPower(leftPower);
             rightRear.setPower(rightPower);
             if (carousel) {
-                carouselMotor.setPower(0.40);
+                carouselMotor.setPower(0.25);
                 sleep(1000);
                 carouselMotor.setPower(0);
 
             }
             if (slowSpeed){
 
-                leftFront.setPower(leftPower/2);
-                rightFront.setPower(rightPower/2);
-                leftRear.setPower(leftPower/2);
-                rightRear.setPower(rightPower/2);
-                
+                leftFront.setPower(leftPower/16);
+                rightFront.setPower(rightPower/16);
+                leftRear.setPower(leftPower/16);
+                rightRear.setPower(rightPower/16);
+
+                telemetry.addData("slowSpeed", "left (%.2f), right (%.2f)", leftPower, rightPower);
+
             }
-                  // Show the elapsed game time and wheel power.
+            // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
             telemetry.update();
