@@ -61,6 +61,7 @@ public class TeleopDraft extends LinearOpMode {
         leftRear.setDirection(DcMotor.Direction.REVERSE);
         rightRear.setDirection(DcMotor.Direction.FORWARD);
         carouselMotor.setDirection(DcMotor.Direction.FORWARD);
+        armMotor.setDirection(DcMotor.Direction.REVERSE);
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -88,9 +89,10 @@ public class TeleopDraft extends LinearOpMode {
            boolean carousel = gamepad2.a;
 
            double armMotorPower = gamepad2.left_stick_y;
-           double gripperPosition = gamepad2.right_stick_y;
-
-           armMotor.setPower(armMotorPower/8);
+           double gripperPosition = gamepad2.right_stick_x;
+           boolean slowSpeed = gamepad1.left_bumper;
+           
+           armMotor.setPower(armMotorPower/1.5);
            gripper.setPosition(gripperPosition);
 
             // Send calculated power to wheels
@@ -103,6 +105,14 @@ public class TeleopDraft extends LinearOpMode {
                 sleep(1000);
                 carouselMotor.setPower(0);
 
+            }
+            if (slowSpeed){
+
+                leftFront.setPower(leftPower/2);
+                rightFront.setPower(rightPower/2);
+                leftRear.setPower(leftPower/2);
+                rightRear.setPower(rightPower/2);
+                
             }
                   // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
