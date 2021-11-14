@@ -31,21 +31,32 @@ public class AutonomousRedSide extends LinearOpMode {
         waitForStart();
 
 
-        movement(-0.5, 500);
-        
-        RightTurn(0.5,500);
-       
-        // Spins Carousel for a certain amount of time
-        carouselMotor.setPower(0.5);
-        sleep(1000);
-        carouselMotor.setPower(0);
+        movement(0.5,500);
 
-        movement(0.5, 500);
-        
-        LeftTurn(0.5,500);
+        rightTurn(0.5,500);
 
+        //loop for going to carousel spinning it and going back and repeating
+       // for (int i = 0; i < 4; i++){
+
+            movement(-0.5,500);
+
+            carousel(0.1,1000);
+
+            movement(0.5,500);
+
+        //}
+
+        //Parking in warehouse optional
+
+        rightTurn(0.5,500);
+
+        movement(1,1500);
 
     }
+
+    //Methods
+
+    //Move Straight
     public void movement(double speed, int waitMS) {
 
         //moving
@@ -64,7 +75,9 @@ public class AutonomousRedSide extends LinearOpMode {
         leftRear.setPower(0);
 
     }
-    public void LeftTurn(double speed, int waitMS) {
+
+    //Left Turn
+    public void leftTurn(double speed, int waitMS) {
 
         //LeftTurn
         leftFront.setPower(-speed);
@@ -82,7 +95,9 @@ public class AutonomousRedSide extends LinearOpMode {
         leftRear.setPower(0);
 
     }
-    public void RightTurn(double speed, int waitMS) {
+
+    //RightTurn
+    public void rightTurn(double speed, int waitMS) {
 
         //RightTurn
         leftFront.setPower(speed);
@@ -98,6 +113,21 @@ public class AutonomousRedSide extends LinearOpMode {
         rightFront.setPower(0);
         rightRear.setPower(0);
         leftRear.setPower(0);
+
+    }
+
+    //Carousel Movement
+    public void carousel(double speed, int waitMS) {
+
+        //Spin Carousel
+        carouselMotor.setPower(speed);
+
+        //waiting
+        sleep(waitMS);
+
+        //stopping
+        carouselMotor.setPower(0);
+
 
     }
 }
