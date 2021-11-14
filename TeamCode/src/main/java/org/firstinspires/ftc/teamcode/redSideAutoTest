@@ -1,0 +1,103 @@
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
+@Autonomous(name = "RedSideAutonoumous")
+public class AutonomousRedSide extends LinearOpMode {
+
+    private DcMotor leftFront;
+    private DcMotor leftRear;
+    private DcMotor rightFront;
+    private DcMotor rightRear;
+    private DcMotor carouselMotor;
+
+    /**
+     * This function is executed when this Op Mode is selected from the Driver Station.
+     */
+    @Override
+    public void runOpMode() {
+        leftFront = hardwareMap.get(DcMotor.class, "leftFront");
+        leftRear = hardwareMap.get(DcMotor.class, "leftRear");
+        rightFront = hardwareMap.get(DcMotor.class, "rightFront");
+        rightRear = hardwareMap.get(DcMotor.class, "rightRear");
+        carouselMotor = hardwareMap.get(DcMotor.class, "carouselMotor");
+
+        // Inizilization
+        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftRear.setDirection(DcMotorSimple.Direction.REVERSE);
+        waitForStart();
+
+
+        movement(-0.5, 500);
+        
+        RightTurn(0.5,500);
+       
+        // Spins Carousel for a certain amount of time
+        carouselMotor.setPower(0.5);
+        sleep(1000);
+        carouselMotor.setPower(0);
+
+        movement(0.5, 500);
+        
+        LeftTurn(0.5,500);
+
+
+    }
+    public void movement(double speed, int waitMS) {
+
+        //moving
+        leftFront.setPower(speed);
+        rightFront.setPower(speed);
+        leftRear.setPower(speed);
+        rightRear.setPower(speed);
+
+        //waiting
+        sleep(waitMS);
+
+        //stopping
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        rightRear.setPower(0);
+        leftRear.setPower(0);
+
+    }
+    public void LeftTurn(double speed, int waitMS) {
+
+        //LeftTurn
+        leftFront.setPower(-speed);
+        rightFront.setPower(speed);
+        leftRear.setPower(-speed);
+        rightRear.setPower(speed);
+
+        //waiting
+        sleep(waitMS);
+
+        //stopping
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        rightRear.setPower(0);
+        leftRear.setPower(0);
+
+    }
+    public void RightTurn(double speed, int waitMS) {
+
+        //RightTurn
+        leftFront.setPower(speed);
+        rightFront.setPower(-speed);
+        leftRear.setPower(speed);
+        rightRear.setPower(-speed);
+
+        //waiting
+        sleep(waitMS);
+
+        //stopping
+        leftFront.setPower(0);
+        rightFront.setPower(0);
+        rightRear.setPower(0);
+        leftRear.setPower(0);
+
+    }
+}
