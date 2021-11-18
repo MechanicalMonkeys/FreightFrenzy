@@ -5,8 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Autonomous(name = "RedSideAutonoumous")
-public class AutonomousBlueSide extends LinearOpMode {
+@Autonomous(name = "BlueSideAutonoumousPain")
+public class AutonomousBluePain extends LinearOpMode {
 
     private DcMotor leftFront;
     private DcMotor leftRear;
@@ -31,32 +31,48 @@ public class AutonomousBlueSide extends LinearOpMode {
         waitForStart();
 
 
-        movement(0.5,500);
+        movementStraight(0.5,1000);
 
-        leftTurn(0.5,500);
+        leftTurn(1,700);
+        
+        movementStraight(-0.1,300);
+        
+        movementStraight(-0.5,1550);
 
-        // for (int i = 0; i < 4; i++){
+        carousel(.45,2000);
 
-        movement(-0.5,500);
+        movementStraight(0.5,1500);
+        
+        sleep(500);
+        
+        for (int i = 0; i < 3; i++){
+            
+        leftTurn();
+        
+        movementStraight(-0.1,300);
+        
+        movementStraight(-0.5,1550);
+        
+        carousel(.45,2000);
 
-        carousel(0.1,1000);
+        movementStraight(0.5,1500);
 
-        movement(0.5,500);
+        sleep(500);
 
-        //}
+        }
 
         //Parking in warehouse optional
 
-        leftTurn(0.5,500);
+        leftTurn(0.5,400);
 
-        movement(1,1500);
+        movementStraight(1,2000);
 
     }
 
     //Methods
 
     //Move Straight
-    public void movement(double speed, int waitMS) {
+    public void movementStraight(double speed, int waitMS) {
 
         //moving
         leftFront.setPower(speed);
