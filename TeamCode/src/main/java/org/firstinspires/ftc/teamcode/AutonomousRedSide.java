@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Autonomous(name = "AutonomousRedSide")
-public class AutonomousRedSide extends LinearOpMode {
+@Autonomous(name = "AutonomousRedSideNew")
+public class AutonomousRedSideNew extends LinearOpMode {
 
     private DcMotor leftFront;
     private DcMotor leftRear;
@@ -35,7 +35,7 @@ public class AutonomousRedSide extends LinearOpMode {
         movementStraight(0.5,1000);
 
         //turns so the wheel is facing carousel
-        rightTurn(1,500);
+        rightTurn(1,450);
 
         //slow movement so it dosnt move wierd when changing direction
         movementStraight(-0.1,300);
@@ -44,7 +44,7 @@ public class AutonomousRedSide extends LinearOpMode {
         movementStraight(-0.5,1500);
 
         //spins carousel
-        carousel(.45,2000);
+        carousel(.25,3500);
 
         //moves away from carousel
         movementStraight(0.5,1600);
@@ -52,7 +52,7 @@ public class AutonomousRedSide extends LinearOpMode {
         //sleeps so no wierd movements
         sleep(500);
 
-        for (int i = 0; i < 2; i++){
+        for (int i = 0; i < 1; i++){
 
             //slight turn to fix robot slightly turning
             rightTurn(0.25,150);
@@ -64,10 +64,10 @@ public class AutonomousRedSide extends LinearOpMode {
             movementStraight(-0.5,1500);
 
             //spins carousel
-            carousel(.45,2250);
+            carousel(.25,3500);
 
             //moves away from carousel
-            movementStraight(0.5,1600);
+            movementStraight(0.5,1000);
 
             //sleeps so no wierd movements
             sleep(500);
@@ -76,7 +76,7 @@ public class AutonomousRedSide extends LinearOpMode {
 
         //Parking in warehouse optional
 
-        rightTurn(0.5,575);
+        rightTurn(0.5,350);
 
         //moves arm up so it dosn't hit anything
 
