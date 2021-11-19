@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous(name = "AutoomousBlueSide")
-public class AutonomousBlueSide extends LinearOpMode {
+public class AutonomousBlueSideNew extends LinearOpMode {
 
     private DcMotor leftFront;
     private DcMotor leftRear;
