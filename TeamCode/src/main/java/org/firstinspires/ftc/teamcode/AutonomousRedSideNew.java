@@ -35,7 +35,7 @@ public class AutonomousRedSideNew extends LinearOpMode {
         movementStraight(0.5,1000);
 
         //turns so the wheel is facing carousel
-        rightTurn(1,450);
+        rightTurn(1,425);
 
         //slow movement so it dosnt move wierd when changing direction
         movementStraight(-0.1,300);
@@ -44,10 +44,10 @@ public class AutonomousRedSideNew extends LinearOpMode {
         movementStraight(-0.5,1500);
 
         //spins carousel
-        carousel(.25,3500);
+        carousel(.35,3500);
 
         //moves away from carousel
-        movementStraight(0.5,1600);
+        movementStraight(0.45,1600);
 
         //sleeps so no wierd movements
         sleep(500);
@@ -64,7 +64,7 @@ public class AutonomousRedSideNew extends LinearOpMode {
             movementStraight(-0.5,1500);
 
             //spins carousel
-            carousel(.25,3500);
+            carousel(.35,3500);
 
             //moves away from carousel
             movementStraight(0.5,1000);
@@ -76,13 +76,13 @@ public class AutonomousRedSideNew extends LinearOpMode {
 
         //Parking in warehouse optional
 
-        rightTurn(0.5,350);
+        rightTurn(0.75,350);
 
         //moves arm up so it dosn't hit anything
 
         armMove(1,500);
 
-        movementStraight(1,2500);
+        movementStraight(1,4000);
 
     }
 
