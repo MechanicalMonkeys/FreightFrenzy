@@ -38,16 +38,16 @@ public class AutonomousBlueSideNew extends LinearOpMode {
         leftTurn(1,450);
 
         //slow movement so it dosnt move wierd when changing direction
-        movementStraight(-0.1,300);
+        movementStraight(-0.1,400);
 
         //moves toward carousel
-        movementStraight(-0.5,1500);
+        movementStraight(-0.5,1450);
 
         //spins carousel
-        carousel(.25,3500);
+        carousel(0.60,3500);
 
         //moves away from carousel
-        movementStraight(0.5,1600);
+        movementStraight(0.45,1350);
 
         //sleeps so no wierd movements
         sleep(500);
@@ -55,16 +55,16 @@ public class AutonomousBlueSideNew extends LinearOpMode {
         for (int i = 0; i < 1; i++){
 
             //slight turn to fix robot slightly turning
-            leftTurn(0.25,150);
+            leftTurn(0.25,100);
 
             //slow movement so it dosnt move wierd when changing direction
             movementStraight(-0.1,300);
 
             //moves toward carousel
-            movementStraight(-0.5,1500);
+            movementStraight(-0.5,1250);
 
             //spins carousel
-            carousel(.25,3500);
+            carousel(0.60,3500);
 
             //moves away from carousel
             movementStraight(0.5,1000);
@@ -74,15 +74,15 @@ public class AutonomousBlueSideNew extends LinearOpMode {
 
         }
 
-        //Parking in warehouse optional
+        //Parking in warehouse 
 
-        leftTurn(0.5,350);
+        leftTurn(0.75,100);
 
         //moves arm up so it dosn't hit anything
 
         armMove(1,500);
 
-        movementStraight(1,4000);
+        movementStraight(1,2250);
 
     }
 
