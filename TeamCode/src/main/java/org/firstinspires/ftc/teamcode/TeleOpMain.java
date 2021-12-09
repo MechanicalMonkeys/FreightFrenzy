@@ -12,9 +12,9 @@ import com.qualcomm.robotcore.util.Range;
 
 
 
-@TeleOp(name="TeleopMain", group="Linear Opmode")
+@TeleOp(name="TeleOpFrieght1", group="Linear Opmode")
 //@Disabled
-public class TeleOpMain extends LinearOpMode {
+public class TeleOpFrieght extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -71,14 +71,14 @@ public class TeleOpMain extends LinearOpMode {
             // - This uses basic math to combine motions and is easier to drive straight.
             double drive = -gamepad1.left_stick_y;
             double turn  =  gamepad1.right_stick_x;
-            leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
-            rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
+            leftPower    = Range.clip(drive + turn, -1.0, 1.0);
+            rightPower   = Range.clip(drive - turn, -1.0, 1.0);
             boolean slowSpeed = gamepad1.left_bumper;
             boolean slowArm = gamepad2.left_bumper;
 
-
             boolean carousel = gamepad2.a;
-
+            boolean carousel2 = gamepad2.b;
+            
             double armMotorPower = gamepad2.left_stick_y;
             double gripperPosition = gamepad2.right_stick_x;
 
@@ -87,42 +87,47 @@ public class TeleOpMain extends LinearOpMode {
             gripper.setPosition(gripperPosition);
 
             // Send calculated power to wheels
+            
             leftFront.setPower(leftPower);
             rightFront.setPower(rightPower);
             leftRear.setPower(leftPower);
             rightRear.setPower(rightPower);
+            
             if (carousel) {
-                carouselMotor.setPower(0.40);
-                sleep(1000);
+                carouselMotor.setPower(0.60);
+                sleep(100);
                 carouselMotor.setPower(0);
 
             }
-            if (slowSpeed){
-
-                leftFront.setPower(leftPower/6);
-                rightFront.setPower(rightPower/6);
-                leftRear.setPower(leftPower/6);
-                rightRear.setPower(rightPower/6);
-
-            }
-
-            if (slowArm){
-
-                armMotor.setPower(armMotorPower/3);
+            
+            if (carousel2) {
+                carouselMotor.setPower(-0.60);
+                sleep(100);
+                carouselMotor.setPower(0);
 
             }
+           
+           //Slow code it waiting for its return
+            /*if (slowSpeed == true){
+
+                leftFront.setPower(leftPower/4);
+                rightFront.setPower(rightPower/4);
+                leftRear.setPower(leftPower/4);
+                rightRear.setPower(rightPower/4);
+            
+            }
+
+            if (slowArm == true){
+
+                armMotor.setPower(armMotorPower/4);
+
+            }*/
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
             telemetry.update();
 
             //turns on/off carousel motor
-        /* if (gamepad1.a == true) {
-            carouselMotor.setPower(0.25);
-            sleep(1000);
-            carouselMotor.setPower(0);
-        }
-            */
         }
 
     }
