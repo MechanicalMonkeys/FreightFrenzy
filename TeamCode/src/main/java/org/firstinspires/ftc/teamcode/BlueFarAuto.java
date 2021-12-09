@@ -32,12 +32,12 @@ public class BlueFarAuto extends LinearOpMode {
         waitForStart();
 
         movementStraight(0.5, 750);
-
+        
         armMove(1, 100);
 
         leftTurn(1, 600);
 
-        movementStraight(1, 1250);
+        movementStraight(1, 1150);
 
 
     }
